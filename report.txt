@@ -1,0 +1,24 @@
+schdulertest.c
+
+this file is used to check the scheduling algorithms. The child processes are of different types as the I/O
+and CPU loops depend on the child number and so there is a good blend of both CPU and
+IO times.
+
+DATA
+
+scheduler   rtime   wtime
+
+PBS           35     114
+FCFS          70     84
+MLFQ          58     135
+RR            20     120
+
+Conclusion:
+1. FCFS is the slowest because overall turnaround time is increased , which is caused by CPU bound processes executing before I/O bound processes.
+2. MLFQ and PBS are comparatively faster.
+3. RR is the fastest, and executes a little faster than MLFQ and PBS as it gives fair run time to all the forked processes.
+4. RR<=MLFQ<=PBS<FCFS
+
+Question answer:
+If a process comes back and rejoins queuing network after leaving for I/O, it would be inserted into the tail of the same queue, and thus if processes with high I/O demand, will continue to be part of higher priority queues for a long amount of time, which will give it an advantage over other processes, which will keep getting pushed to lower queues.
+
